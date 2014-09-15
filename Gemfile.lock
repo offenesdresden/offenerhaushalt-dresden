@@ -1,12 +1,32 @@
-GEM
-  remote: https://rubygems.org/
+GIT
+  remote: https://github.com/tabulapdf/tabula-extractor.git
+  revision: 8fa03922d813f954381138a00d02c7913c7b0749
+  ref: 8fa03922d813f954381138a0
   specs:
     tabula-extractor (0.7.4-java)
       trollop (~> 2.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    coderay (1.1.0)
+    ffi (1.9.3-java)
+    method_source (0.8.2)
+    pry (0.10.1-java)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+      spoon (~> 0.0)
+    rake (10.3.2)
+    slop (3.6.0)
+    spoon (0.0.4)
+      ffi
     trollop (2.0)
 
 PLATFORMS
   java
 
 DEPENDENCIES
-  tabula-extractor
+  pry
+  rake
+  tabula-extractor!
