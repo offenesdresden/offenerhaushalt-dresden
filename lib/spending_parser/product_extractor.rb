@@ -23,7 +23,16 @@ module SpendingParser
       (0..width).each do |j|
         if !blank?(rows[PART][j])
           part = product(data, j)
-          part.name_and_id_from_cell = rows[PART][j]
+          begin
+            part.name_and_id_from_cell = rows[PART][j]
+          rescue Errors::ParseError => e
+            # WORKAROUND: In rare cases (at least ones) the part summary is one page
+            # earlier, while the rest of the part including part name is one column later
+            part.name_and_id_from_cell = rows[PART][j + 1]
+            unless rows[PART][j].start_with?(part.id)
+              raise e
+            end
+          end
           part.year_from_cell = rows[YEAR][j]
           parts << part
         elsif !blank?(rows[GROUP][j])
@@ -56,7 +65,7 @@ module SpendingParser
           msg = "expect table on page #{page_number} to have: #{Tables::ROWS_HEIGHT} rows, got: #{rows.size}:\n"
           msg += pretty_print_table(rows)
 
-          raise StandardError.new(msg)
+          raise Errors::ParseError.new(msg)
         end
 
         rows.each_with_index do |row, i|

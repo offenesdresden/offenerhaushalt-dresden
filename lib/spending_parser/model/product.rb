@@ -16,7 +16,7 @@ module SpendingParser
       unless cell =~ /Ansatz (\d+)$/
         e = "failed to extract year from first row \n"
         e += "cell content is: '#{cell}'"
-        raise StandardError.new(e)
+        raise Errors::ParseError.new(e)
       end
       @year = $1
     end
@@ -25,7 +25,7 @@ module SpendingParser
       unless cell =~ /(\S+)\s+(.+)/
         e = "failed to extract name and id from first cell of product\n"
         e += "cell content is: '#{cell}'"
-        raise StandardError.new(e)
+        raise Errors::ParseError.new(e)
       end
       @id, @name = $1, $2
       # normalize hyphen

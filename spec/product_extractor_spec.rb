@@ -22,8 +22,5 @@ describe SpendingParser::ProductExtractor do
     data[0].must_equal "3" # id row
     data[1].must_equal "0"
     data[2].must_equal "1.691.828"
-
-    #t = SpendingParser::Serialisation.new(@extractor.products)
-    #t.to_csv
   end
 end
