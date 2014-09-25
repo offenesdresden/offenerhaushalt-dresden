@@ -9,7 +9,7 @@ Get the code
 Get jruby (this means java, need for [tabular-extractor](TODO))
 
     curl -L https://get.rvm.io | bash
-    rvm install 2.1.0
+    rvm install jruby
 
 Install bundler
 
