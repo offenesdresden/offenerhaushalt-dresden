@@ -1,3 +1,0 @@
-#!/usr/bin/env jruby -J-Djava.awt.headless=true
-
-require_relative '../lib/haushaltparser'

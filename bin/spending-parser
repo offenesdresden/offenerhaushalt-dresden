@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+path = File.expand_path("../../lib", __FILE__)
+$:.unshift path
+require "spending_parser"
+SpendingParser::Application.run(ARGV)
